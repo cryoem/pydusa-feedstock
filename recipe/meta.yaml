@@ -14,12 +14,14 @@ build:
 
 requirements:
     build:
+        - {{ compiler('c') }}
+    host:
         - python 2.7.*
         - numpy 1.13.*
         - openmpi 2.0.2
         - fftw-mpi
     run:
-        {% for package in resolved_packages('build') %}
+        {% for package in resolved_packages('host') %}
         - {{ package }}
         {% endfor %}
 
