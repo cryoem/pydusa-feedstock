@@ -14,14 +14,14 @@ build:
 
 requirements:
     build:
-        - python
+        - python 2.7.*
         - numpy 1.13.*
         - openmpi 2.0.2
         - fftw-mpi
     run:
-        - numpy 1.13.*
-        - openmpi 2.0.2
-        - fftw-mpi
+        {% for package in resolved_packages('build') %}
+        - {{ package }}
+        {% endfor %}
 
 test:
   imports:
