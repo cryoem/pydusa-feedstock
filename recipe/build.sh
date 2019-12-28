@@ -1,10 +1,13 @@
 #!/bin/bash
 
-export CFLAGS="-I${PREFIX}/include"
+build_dir="${SRC_DIR}/../build_eman"
 
-./configure --prefix=${SP_DIR}
-			
-sed -i.bak 's~\(^LDFLAGS.*$\)~\1 -L/'"${PREFIX}"'/lib -lfftw3_mpi -lfftw3~' src/Makefile
+mkdir -p $build_dir
+cd $build_dir
 
+cmake --version
+cmake $SRC_DIR
+
+cmake
 make
 make install
