@@ -14,14 +14,74 @@ Summary: Pydusa is a package for parallel programming using Python.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/cryoem/pydusa-feedstock.svg?style=shield)](https://circleci.com/gh/cryoem/pydusa-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/cryoem/pydusa-feedstock.svg?branch=master)](https://travis-ci.org/cryoem/pydusa-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+
+<table><tr>
+    <td>CircleCI</td>
+    <td>
+      <a href="https://circleci.com/gh/cryoem/pydusa-feedstock">
+        <img alt="Linux" src="https://img.shields.io/circleci/project/github/cryoem/pydusa-feedstock/master.svg?label=Linux">
+      </a>
+    </td>
+  </tr><tr>
+    <td>Travis</td>
+    <td>
+      <a href="https://travis-ci.org/cryoem/pydusa-feedstock">
+        <img alt="macOS" src="https://img.shields.io/travis/cryoem/pydusa-feedstock/master.svg?label=macOS">
+      </a>
+    </td>
+  </tr>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/cryoem/feedstock-builds/_build/latest?definitionId=blank&branchName=master">
+            <img src="https://dev.azure.com/cryoem/feedstock-builds/_apis/build/status/pydusa-feedstock?branchName=master">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux</td>
+              <td>
+                <a href="https://dev.azure.com/cryoem/feedstock-builds/_build/latest?definitionId=blank&branchName=master">
+                  <img src="https://dev.azure.com/cryoem/feedstock-builds/_apis/build/status/pydusa-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx</td>
+              <td>
+                <a href="https://dev.azure.com/cryoem/feedstock-builds/_build/latest?definitionId=blank&branchName=master">
+                  <img src="https://dev.azure.com/cryoem/feedstock-builds/_apis/build/status/pydusa-feedstock?branchName=master&jobName=osx&configuration=osx_" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
+  <tr>
+    <td>Windows</td>
+    <td>
+      <img src="https://img.shields.io/badge/Windows-disabled-lightgrey.svg" alt="Windows disabled">
+    </td>
+  </tr>
+  <tr>
+    <td>Linux_ppc64le</td>
+    <td>
+      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/cryoem/pydusa/badges/version.svg)](https://anaconda.org/cryoem/pydusa)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/cryoem/pydusa/badges/downloads.svg)](https://anaconda.org/cryoem/pydusa)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pydusa-green.svg)](https://anaconda.org/cryoem/pydusa) | [![Conda Downloads](https://img.shields.io/conda/dn/cryoem/pydusa.svg)](https://anaconda.org/cryoem/pydusa) | [![Conda Version](https://img.shields.io/conda/vn/cryoem/pydusa.svg)](https://anaconda.org/cryoem/pydusa) | [![Conda Platforms](https://img.shields.io/conda/pn/cryoem/pydusa.svg)](https://anaconda.org/cryoem/pydusa) |
 
 Installing pydusa
 =================
@@ -64,7 +124,12 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](http://conda.pydata.org/docs/building/meta-yaml.html#build-number-and-string).
+   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](http://conda.pydata.org/docs/building/meta-yaml.html#build-number-and-string)
+   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+
