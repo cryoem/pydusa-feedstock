@@ -1,4 +1,4 @@
-{% set branch = "master" %}
+{% set branch = "cmake" %}
 
 package:
     name: pydusa
