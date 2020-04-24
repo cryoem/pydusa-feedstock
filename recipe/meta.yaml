@@ -9,7 +9,7 @@ source:
     fn: pydusa-{{ branch }}.tar.gz
 
 build:
-    number: 16
+    number: 17
     skip: True  # [win]
 
 requirements:
