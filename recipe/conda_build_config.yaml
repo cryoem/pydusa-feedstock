@@ -2,3 +2,6 @@ channel_sources:
 - cryoem, defaults,conda-forge
 channel_targets:
 - cryoem main
+c_compiler_version:
+- '11'   # [osx]
+- '9'    # [linux]
