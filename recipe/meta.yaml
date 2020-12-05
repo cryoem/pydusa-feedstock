@@ -1,15 +1,23 @@
-{% set branch = "master" %}
+{% if openmpi == "3" %}
+{% set branch = "py-path" %}
+{% elif openmpi == "4" %}
+{% set branch = "py3-ompi4" %}
+{% endif %}
 
 package:
     name: pydusa
-    version: 1.15
+    {% if openmpi == "3" %}
+    version: 1.30
+    {% elif openmpi == "4" %}
+    version: 1.40
+    {% endif %}
 
 source:
     url: https://github.com/cryoem/pydusa/archive/{{ branch }}.tar.gz
     fn: pydusa-{{ branch }}.tar.gz
 
 build:
-    number: 17
+    number: 0
     skip: True  # [win or py<37]
 
 requirements:
@@ -18,7 +26,7 @@ requirements:
     host:
         - python
         - numpy
-        - openmpi 3
+        - openmpi {{ openmpi }}
         - fftw * mpi_openmpi_*
     run:
         {% for package in resolved_packages('host') %}
