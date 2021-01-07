@@ -3,7 +3,7 @@ channel_sources:
 channel_targets:
 - cryoem main
 c_compiler_version:
-- '4'    # [osx]
-- '7'    # [linux]
+- '11'   # [osx]
+- '9'    # [linux]
 openmpi:
 - '3'
