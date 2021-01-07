@@ -6,5 +6,4 @@ c_compiler_version:
 - '4'    # [osx]
 - '7'    # [linux]
 openmpi:
-- '2'
 - '3'
