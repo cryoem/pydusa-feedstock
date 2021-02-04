@@ -1,15 +1,16 @@
-{% set tag = "master" %}
+{% set version = "2.1" %}
+{% set tag = "v" + version %}
 
 package:
     name: pydusa
-    version: 1.15
+    version: {{ version }}
 
 source:
     url: https://github.com/cryoem/pydusa/archive/{{ tag }}.tar.gz
     fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 17
+    number: 0
     skip: True  # [win or py<37]
 
 requirements:
