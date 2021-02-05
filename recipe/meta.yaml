@@ -1,15 +1,16 @@
-{% set branch = "master" %}
+{% set version = "2.1" %}
+{% set tag = "v" + version %}
 
 package:
     name: pydusa
-    version: 1.15
+    version: {{ version }}
 
 source:
-    url: https://github.com/cryoem/pydusa/archive/{{ branch }}.tar.gz
-    fn: pydusa-{{ branch }}.tar.gz
+    url: https://github.com/cryoem/pydusa/archive/{{ tag }}.tar.gz
+    fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 17
+    number: 0
     skip: True  # [win or py<37]
 
 requirements:
@@ -17,7 +18,7 @@ requirements:
         - {{ compiler('c') }}
     host:
         - python
-        - numpy  1.17
+        - numpy
         - openmpi 3
         - fftw 3.3.8 mpi_openmpi_*
     run:
