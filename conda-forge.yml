@@ -9,7 +9,7 @@ github:
 
 provider:
   linux: circle
-  osx: travis
+  osx: github_actions
 
 azure:
   build_id: blank
