@@ -14,3 +14,6 @@ azure:
   build_id: blank
 
 channel_priority: flexible
+
+os_version:
+  linux_64: cos7
