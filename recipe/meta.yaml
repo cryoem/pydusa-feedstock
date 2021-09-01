@@ -20,7 +20,7 @@ requirements:
     host:
         - python
         - numpy
-        - openmpi 3
+        - openmpi 4
         - fftw 3.* mpi_openmpi_*
     run:
         {% for package in resolved_packages('host') %}
