@@ -20,13 +20,6 @@ Current build status
         <img alt="Linux" src="https://img.shields.io/circleci/project/github/cryoem/pydusa-feedstock/master.svg?label=Linux">
       </a>
     </td>
-  </tr><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.com/cryoem/pydusa-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/com/cryoem/pydusa-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
   </tr>
 </table>
 
@@ -44,6 +37,7 @@ Installing `pydusa` from the `cryoem` channel can be achieved by adding `cryoem`
 
 ```
 conda config --add channels cryoem
+conda config --set channel_priority strict
 ```
 
 Once the `cryoem` channel has been enabled, `pydusa` can be installed with:
@@ -78,9 +72,9 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers
