@@ -23,9 +23,10 @@ requirements:
         - openmpi 3
         - fftw 3.3.8 mpi_openmpi_*
     run:
-        {% for package in resolved_packages('host') %}
-        - {{ package }}
-        {% endfor %}
+        - python
+        - numpy  1.17
+        - openmpi 3
+        - fftw 3.3.8 mpi_openmpi_*
 
 test:
   requires:
