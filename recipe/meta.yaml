@@ -28,8 +28,15 @@ requirements:
         {% endfor %}
 
 test:
+  files:
+    - mpi_test.py
   imports:
     - mpi
+
+  commands:
+    - ompi_info
+    - python -c "import mpi; print(mpi.pydusa_version())"
+    - mpirun --oversubscribe -n 4 python mpi_test.py
 
 about:
   license: GPL-2.0
