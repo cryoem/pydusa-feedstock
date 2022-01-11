@@ -28,6 +28,9 @@ requirements:
         {% endfor %}
 
 test:
+  requires:
+    - openssh
+
   files:
     - mpi_test.py
   imports:
