@@ -9,5 +9,3 @@ github:
 provider:
   linux: circle
   osx: github_actions
-
-channel_priority: flexible
