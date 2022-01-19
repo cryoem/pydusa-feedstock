@@ -36,6 +36,32 @@ if proc == 0:
 
 mpi_barrier(MPI_COMM_WORLD)
 
+# Stage 2, broadcast
+if proc == 0:
+	ab=b"BCAST STRING "
+
+	print(f"Broadcasting from 0           : {ab}")
+	mpi_bcast(ab, len(ab), MPI_CHAR, 0, MPI_COMM_WORLD)
+
+	for i in range(1, nproc):
+		mpi_probe(MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD)
+
+		d = mpi_recv(16, MPI_CHAR, i, 2, MPI_COMM_WORLD)
+		print(f"Received from {i} to 0          : {b''.join(d)}")
+else:
+	b = mpi_bcast(None, 16, MPI_CHAR, 0, MPI_COMM_WORLD)
+	b = b''.join(b)
+	print(f"Received broadcast from 0 to {proc}: {b}")
+
+	b = b.lower() + str(proc).encode()
+	mpi_send(b, len(b), MPI_CHAR, 0, 2, MPI_COMM_WORLD)
+	print(f"Sent     from {proc} to 0          : {b}")
+
+mpi_barrier(MPI_COMM_WORLD)
+
+if proc == 0:
+	print("\nStage 2, broadcast test complete\n")
+
 mpi_finalize()
 
 if proc == 0:
