@@ -20,13 +20,13 @@ requirements:
     host:
         - python
         - numpy
-        - openmpi 3
-        - fftw 3.3.8 mpi_openmpi_*
+        - openmpi
+        - fftw * mpi_openmpi_*
     run:
         - python
         - {{ pin_compatible('numpy', min_pin='x.x', max_pin='x.x') }}
-        - openmpi 3
-        - fftw 3.3.8 mpi_openmpi_*
+        - openmpi
+        - fftw * mpi_openmpi_*
 
 test:
   requires:
