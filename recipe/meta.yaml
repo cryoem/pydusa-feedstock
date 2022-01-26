@@ -1,4 +1,4 @@
-{% set version = "2.1" %}
+{% set version = "3.1" %}
 {% set tag = "v" + version %}
 
 package:
@@ -19,7 +19,7 @@ requirements:
         - make
     host:
         - python
-        - numpy  1.17
+        - numpy
         - openmpi 3
         - fftw 3.3.8 mpi_openmpi_*
     run:
