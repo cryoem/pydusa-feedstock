@@ -19,7 +19,7 @@ requirements:
         - make
     host:
         - python
-        - numpy  1.17
+        - numpy
         - openmpi 3
         - fftw 3.3.8 mpi_openmpi_*
     run:
