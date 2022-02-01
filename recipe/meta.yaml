@@ -19,12 +19,12 @@ requirements:
         - make
         - sysroot_linux-64 2.17  # [linux64]
     host:
-        - python
-        - numpy
+        - python {{ pyt }}
+        - numpy {{ numpy }}
         - openmpi
         - fftw * mpi_openmpi_*
     run:
-        - python
+        - python {{ pyt }}
         - {{ pin_compatible('numpy', min_pin='x.x', max_pin='x.x') }}
         - openmpi
         - fftw * mpi_openmpi_*
