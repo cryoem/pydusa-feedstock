@@ -1,4 +1,4 @@
-{% set version = "2.1" %}
+{% set version = "3.1" %}
 {% set tag = "v" + version %}
 
 package:
@@ -10,22 +10,24 @@ source:
     fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 0
-    skip: True  # [win or py<37 or py>38]
+    number: 2
+    skip: True  # [win]
 
 requirements:
     build:
         - {{ compiler('c') }}
         - make
+        - sysroot_linux-64 2.17  # [linux64]
     host:
-        - python
-        - numpy  1.17
-        - openmpi 3
-        - fftw 3.3.8 mpi_openmpi_*
+        - python {{ pyt }}
+        - numpy {{ numpy }}
+        - openmpi
+        - fftw * mpi_openmpi_*
     run:
-        {% for package in resolved_packages('host') %}
-        - {{ package }}
-        {% endfor %}
+        - python {{ pyt }}
+        - {{ pin_compatible('numpy', min_pin='x.x', max_pin='x.x') }}
+        - openmpi
+        - fftw * mpi_openmpi_*
 
 test:
   requires:

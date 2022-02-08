@@ -13,10 +13,22 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - CONFIG: osx_64_python3.7.____cpython
+          - CONFIG: osx_64_numpy1.18pyt3.7.____cpython
             UPLOAD_PACKAGES: True
             os: macos
-          - CONFIG: osx_64_python3.8.____cpython
+          - CONFIG: osx_64_numpy1.18pyt3.8.____cpython
+            UPLOAD_PACKAGES: True
+            os: macos
+          - CONFIG: osx_64_numpy1.18pyt3.9.____cpython
+            UPLOAD_PACKAGES: True
+            os: macos
+          - CONFIG: osx_64_numpy1.19pyt3.7.____cpython
+            UPLOAD_PACKAGES: True
+            os: macos
+          - CONFIG: osx_64_numpy1.19pyt3.8.____cpython
+            UPLOAD_PACKAGES: True
+            os: macos
+          - CONFIG: osx_64_numpy1.19pyt3.9.____cpython
             UPLOAD_PACKAGES: True
             os: macos
     steps:
