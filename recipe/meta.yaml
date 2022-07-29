@@ -10,7 +10,7 @@ source:
     fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 2
+    number: 4
     skip: True  # [win]
 
 requirements:
@@ -19,12 +19,12 @@ requirements:
         - make
         - sysroot_linux-64 2.17  # [linux64]
     host:
-        - python {{ pyt }}
-        - numpy {{ numpy }}
+        - python
+        - numpy
         - openmpi
         - fftw * mpi_openmpi_*
     run:
-        - python {{ pyt }}
+        - python
         - {{ pin_compatible('numpy', min_pin='x.x', max_pin='x.x') }}
         - openmpi
         - fftw * mpi_openmpi_*

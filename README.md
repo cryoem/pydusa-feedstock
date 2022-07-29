@@ -40,16 +40,41 @@ conda config --add channels cryoem
 conda config --set channel_priority strict
 ```
 
-Once the `cryoem` channel has been enabled, `pydusa` can be installed with:
+Once the `cryoem` channel has been enabled, `pydusa` can be installed with `conda`:
 
 ```
 conda install pydusa
 ```
 
-It is possible to list all of the versions of `pydusa` available on your platform with:
+or with `mamba`:
+
+```
+mamba install pydusa
+```
+
+It is possible to list all of the versions of `pydusa` available on your platform with `conda`:
 
 ```
 conda search pydusa --channel cryoem
+```
+
+or with `mamba`:
+
+```
+mamba search pydusa --channel cryoem
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search pydusa --channel cryoem
+
+# List packages depending on `pydusa`:
+mamba repoquery whoneeds pydusa --channel cryoem
+
+# List dependencies of `pydusa`:
+mamba repoquery depends pydusa --channel cryoem
 ```
 
 
