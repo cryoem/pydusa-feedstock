@@ -1,11 +1,11 @@
-About pydusa
-============
+About pydusa-feedstock
+======================
 
-Home: 
+Feedstock license: [BSD-3-Clause](https://github.com/cryoem/pydusa-feedstock/blob/main/LICENSE.txt)
+
+
 
 Package license: GPL-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/cryoem/pydusa-feedstock/blob/master/LICENSE.txt)
 
 Summary: Pydusa is a package for parallel programming using Python.
 
@@ -17,7 +17,7 @@ Current build status
     <td>CircleCI</td>
     <td>
       <a href="https://circleci.com/gh/cryoem/pydusa-feedstock">
-        <img alt="Linux" src="https://img.shields.io/circleci/project/github/cryoem/pydusa-feedstock/master.svg?label=Linux">
+        <img alt="Linux" src="https://img.shields.io/circleci/project/github/cryoem/pydusa-feedstock/main.svg?label=Linux">
       </a>
     </td>
   </tr>
