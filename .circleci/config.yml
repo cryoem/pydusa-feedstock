@@ -24,6 +24,9 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
+            export flow_run_id="circle_$CIRCLE_WORKFLOW_ID"
+            export remote_url="$CIRCLE_REPOSITORY_URL"
+            export sha="$CIRCLE_SHA1"
             export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
             if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
               export IS_PR_BUILD="False"
@@ -50,6 +53,9 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
+            export flow_run_id="circle_$CIRCLE_WORKFLOW_ID"
+            export remote_url="$CIRCLE_REPOSITORY_URL"
+            export sha="$CIRCLE_SHA1"
             export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
             if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
               export IS_PR_BUILD="False"
@@ -76,6 +82,9 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
+            export flow_run_id="circle_$CIRCLE_WORKFLOW_ID"
+            export remote_url="$CIRCLE_REPOSITORY_URL"
+            export sha="$CIRCLE_SHA1"
             export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
             if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
               export IS_PR_BUILD="False"
@@ -102,6 +111,38 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
+            export flow_run_id="circle_$CIRCLE_WORKFLOW_ID"
+            export remote_url="$CIRCLE_REPOSITORY_URL"
+            export sha="$CIRCLE_SHA1"
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
+            ./.scripts/run_docker_build.sh
+  build_linux_64_numpy1.26python3.12.____cpython:
+    working_directory: ~/test
+    machine:
+      - image: ubuntu-2004:current
+    environment:
+      - CONFIG: "linux_64_numpy1.26python3.12.____cpython"
+      - UPLOAD_PACKAGES: "True"
+        DOCKER_IMAGE: "quay.io/condaforge/linux-anvil-cos7-x86_64"
+    steps:
+      - checkout
+      - run:
+          name: Fast finish outdated PRs and merge PRs
+          command: |
+            ./.circleci/fast_finish_ci_pr_build.sh
+            ./.circleci/checkout_merge_commit.sh
+      - run:
+          # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
+          command: |
+            export CI=circle
+            export flow_run_id="circle_$CIRCLE_WORKFLOW_ID"
+            export remote_url="$CIRCLE_REPOSITORY_URL"
+            export sha="$CIRCLE_SHA1"
             export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
             if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
               export IS_PR_BUILD="False"
@@ -118,3 +159,4 @@ workflows:
       - build_linux_64_numpy1.22python3.8.____cpython
       - build_linux_64_numpy1.22python3.9.____cpython
       - build_linux_64_numpy1.23python3.11.____cpython
+      - build_linux_64_numpy1.26python3.12.____cpython

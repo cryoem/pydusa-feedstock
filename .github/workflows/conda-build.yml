@@ -3,12 +3,20 @@
 # -*- mode: yaml -*-
 
 name: Build conda package
-on: [push, pull_request]
+on:
+  push:
+
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
 
 jobs:
   build:
     name: ${{ matrix.CONFIG }}
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.runs_on }}
+    timeout-minutes: 360
     strategy:
       fail-fast: false
       matrix:
@@ -16,31 +24,47 @@ jobs:
           - CONFIG: osx_64_numpy1.22python3.10.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_64_numpy1.22python3.8.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_64_numpy1.22python3.9.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_64_numpy1.23python3.11.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
+          - CONFIG: osx_64_numpy1.26python3.12.____cpython
+            UPLOAD_PACKAGES: True
+            os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_arm64_numpy1.22python3.10.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_arm64_numpy1.22python3.8.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_arm64_numpy1.22python3.9.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
           - CONFIG: osx_arm64_numpy1.23python3.11.____cpython
             UPLOAD_PACKAGES: True
             os: macos
+            runs_on: ['macos-13']
+          - CONFIG: osx_arm64_numpy1.26python3.12.____cpython
+            UPLOAD_PACKAGES: True
+            os: macos
+            runs_on: ['macos-13']
     steps:
 
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
     - name: Build on Linux
       if: matrix.os == 'ubuntu'
@@ -49,11 +73,15 @@ jobs:
         UPLOAD_PACKAGES: ${{ matrix.UPLOAD_PACKAGES }}
         DOCKER_IMAGE: ${{ matrix.DOCKER_IMAGE }}
         CI: github_actions
+        CONDA_FORGE_DOCKER_RUN_ARGS: "${{ matrix.CONDA_FORGE_DOCKER_RUN_ARGS }}"
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       shell: bash
       run: |
         echo "::group::Configure binfmt_misc"
         docker run --rm --privileged multiarch/qemu-user-static:register --reset --credential yes
+        export flow_run_id="github_$GITHUB_RUN_ID"
+        export remote_url="https://github.com/$GITHUB_REPOSITORY"
+        export sha="$GITHUB_SHA"
         export FEEDSTOCK_NAME="$(basename $GITHUB_REPOSITORY)"
         export GIT_BRANCH="$(basename $GITHUB_REF)"
         if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
@@ -73,6 +101,9 @@ jobs:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       shell: bash
       run: |
+        export flow_run_id="github_$GITHUB_RUN_ID"
+        export remote_url="https://github.com/$GITHUB_REPOSITORY"
+        export sha="$GITHUB_SHA"
         export FEEDSTOCK_NAME="$(basename $GITHUB_REPOSITORY)"
         export GIT_BRANCH="$(basename $GITHUB_REF)"
         if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
@@ -83,15 +114,17 @@ jobs:
         ./.scripts/run_osx_build.sh
 
     - name: Install Miniconda for windows
-      uses: conda-incubator/setup-miniconda@v2
+      uses: conda-incubator/setup-miniconda@a4260408e20b96e80095f42ff7f1a15b27dd94ca # v3.0.4
       with:
         miniforge-version: latest
-        miniforge-variant: Mambaforge
       if: matrix.os == 'windows'
 
     - name: Build on windows
       shell: cmd
       run: |
+        set "flow_run_id=github_%GITHUB_RUN_ID%"
+        set "remote_url=https://github.com/%GITHUB_REPOSITORY%"
+        set "sha=%GITHUB_SHA%"
         call ".scripts\run_win_build.bat"
       env:
         PYTHONUNBUFFERED: 1
