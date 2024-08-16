@@ -1,4 +1,4 @@
-{% set version = "3.1" %}
+{% set version = "3.1.1" %}
 {% set tag = "v" + version %}
 
 package:
@@ -10,7 +10,7 @@ source:
     fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 8
+    number: 0
     skip: True  # [win]
     skip: True  # [py < 311]
 
