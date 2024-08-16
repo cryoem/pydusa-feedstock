@@ -13,14 +13,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>CircleCI</td>
-    <td>
-      <a href="https://circleci.com/gh/cryoem/pydusa-feedstock">
-        <img alt="Linux" src="https://img.shields.io/circleci/project/github/cryoem/pydusa-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
 </table>
 
 Current release info
