@@ -10,7 +10,7 @@ source:
     fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 7
+    number: 8
     skip: True  # [win]
 
 requirements:
