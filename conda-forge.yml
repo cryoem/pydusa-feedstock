@@ -7,7 +7,7 @@ github:
   repo_name: pydusa-feedstock
 
 provider:
-  linux: circle
+  linux: github_actions
   osx: github_actions
 
 os_version:
