@@ -10,7 +10,7 @@ source:
     fn: pydusa-{{ tag }}.tar.gz
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win]
     skip: True  # [py < 311]
 
