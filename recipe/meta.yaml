@@ -28,12 +28,12 @@ requirements:
         - python
         - numpy
         - openmpi
-        - fftw * mpi_openmpi_*
+        - fftw
     run:
         - python
         - {{ pin_compatible('numpy', min_pin='x.x', max_pin='x.x') }}
         - openmpi
-        - fftw * mpi_openmpi_*
+        - fftw
 
 test:
   requires:
