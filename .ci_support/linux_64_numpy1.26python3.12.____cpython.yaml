@@ -10,6 +10,8 @@ channel_targets:
 - cryoem main
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+fftw:
+- '3'
 numpy:
 - '1.26'
 openmpi:
