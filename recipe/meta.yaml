@@ -6,8 +6,8 @@ package:
     version: {{ version }}
 
 source:
-    url: https://github.com/cryoem/pydusa/archive/{{ tag }}.tar.gz
-    fn: pydusa-{{ tag }}.tar.gz
+    url: https://github.com/cryoem/pydusa/archive/refs/heads/{{ tag }}.zip
+    fn: pydusa-{{ tag }}.zip
 
 build:
     number: 0
